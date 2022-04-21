@@ -1,0 +1,33 @@
+a ="Primer Prueba";
+a = 2+2;
+a = 11111.11; */ Comentario de Prueba /*
+a = .9999;
+b = "lad skd lakds ";
+Z:=C;
+k=Z;
+
+*/ Errores probados /*
+*/ La linea de abajo supera el limite del entero de 16 bits permitido-> maximo  65,536 /*
+*/ a = 99999999999; /*
+*/ La linea de abajo supera el limite del real de 32 bits permitido-> maximo 4294967296 /*
+*/ a = 100000000000000000.654548; /*
+
+DIM < a, b, z > AS < integer, real, string >;
+DIM < r > AS < string >;
+
+DISPLAY 10;
+Display b;
+
+
+IF (a <= 30)
+b = "condicion verdadera"; 
+ENDIF;
+
+
+WHILE (a < 10)[
+    b = "true";
+];
+
+
+
+
