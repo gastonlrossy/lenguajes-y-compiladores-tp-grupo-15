@@ -55,28 +55,32 @@
      AS_T = 271,
      CORCHETE_A = 272,
      CORCHETE_C = 273,
-     COMA_T = 274,
-     DOT_COM_T = 275,
-     PARENT_A = 276,
-     PARENT_C = 277,
-     OP_MEN = 278,
-     OP_MAY = 279,
-     OP_MEN_IGU = 280,
-     OP_MAY_IGU = 281,
-     OP_NOT = 282,
-     OP_AND = 283,
-     OP_OR = 284,
-     OP_COMP = 285,
-     CONST_INT = 286,
-     CONST_REAL = 287,
-     VARIABLE = 288,
-     CONST_STRING = 289,
-     OP_SUM_T = 290,
-     OP_REST_T = 291,
-     OP_DIV_T = 292,
-     OP_MULT_T = 293,
-     MENOS_UNARIO = 294,
-     OP_ASIG_T = 295
+     LLAVE_A = 274,
+     LLAVE_C = 275,
+     COMA_T = 276,
+     DOT_COM_T = 277,
+     PARENT_A = 278,
+     PARENT_C = 279,
+     OP_MEN = 280,
+     OP_MAY = 281,
+     OP_MEN_IGU = 282,
+     OP_MAY_IGU = 283,
+     OP_NOT = 284,
+     OP_AND = 285,
+     OP_OR = 286,
+     OP_COMP = 287,
+     CONST_INT = 288,
+     CONST_REAL = 289,
+     VARIABLE = 290,
+     BETWEEN_T = 291,
+     AVG_T = 292,
+     CONST_STRING = 293,
+     OP_SUM_T = 294,
+     OP_REST_T = 295,
+     OP_DIV_T = 296,
+     OP_MULT_T = 297,
+     MENOS_UNARIO = 298,
+     OP_ASIG_T = 299
    };
 #endif
 /* Tokens.  */
@@ -96,28 +100,32 @@
 #define AS_T 271
 #define CORCHETE_A 272
 #define CORCHETE_C 273
-#define COMA_T 274
-#define DOT_COM_T 275
-#define PARENT_A 276
-#define PARENT_C 277
-#define OP_MEN 278
-#define OP_MAY 279
-#define OP_MEN_IGU 280
-#define OP_MAY_IGU 281
-#define OP_NOT 282
-#define OP_AND 283
-#define OP_OR 284
-#define OP_COMP 285
-#define CONST_INT 286
-#define CONST_REAL 287
-#define VARIABLE 288
-#define CONST_STRING 289
-#define OP_SUM_T 290
-#define OP_REST_T 291
-#define OP_DIV_T 292
-#define OP_MULT_T 293
-#define MENOS_UNARIO 294
-#define OP_ASIG_T 295
+#define LLAVE_A 274
+#define LLAVE_C 275
+#define COMA_T 276
+#define DOT_COM_T 277
+#define PARENT_A 278
+#define PARENT_C 279
+#define OP_MEN 280
+#define OP_MAY 281
+#define OP_MEN_IGU 282
+#define OP_MAY_IGU 283
+#define OP_NOT 284
+#define OP_AND 285
+#define OP_OR 286
+#define OP_COMP 287
+#define CONST_INT 288
+#define CONST_REAL 289
+#define VARIABLE 290
+#define BETWEEN_T 291
+#define AVG_T 292
+#define CONST_STRING 293
+#define OP_SUM_T 294
+#define OP_REST_T 295
+#define OP_DIV_T 296
+#define OP_MULT_T 297
+#define MENOS_UNARIO 298
+#define OP_ASIG_T 299
 
 
 
@@ -134,7 +142,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 138 "y.tab.h"
+#line 146 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

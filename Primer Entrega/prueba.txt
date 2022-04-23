@@ -1,7 +1,7 @@
 a ="Primer Prueba";
 a = 2+2;
 a = 11111.11; */ Comentario de Prueba /*
-a = .9999;
+a = .9987;
 b = "lad skd lakds ";
 Z:=C;
 k=Z;
@@ -12,22 +12,27 @@ k=Z;
 */ La linea de abajo supera el limite del real de 32 bits permitido-> maximo 4294967296 /*
 */ a = 100000000000000000.654548; /*
 
-DIM < a, b, z > AS < integer, real, string >;
+DIM < a, b, z,J > AS < integer, real, string ,string>;
 DIM < r > AS < string >;
 
 DISPLAY 10;
 Display b;
 
 
-IF (a <= 30)
+IF ( BETWEEN (a,[2 ; a*(b+4)]) || a < 10 )
 b = "condicion verdadera"; 
 ENDIF;
 
 
-WHILE (a < 10)[
+WHILE (a < 10){
     b = "true";
-];
+};
 
+WHILE (BETWEEN (a,[2 ; a*(b+4)])){
+    J = "prueba32";
+};
 
+BETWEEN (a,[2 ; a*(b+4)]);
 
-
+AVG ([2.3 , 1.22]);
+AVG ([2 , a+b , c*(d+e) , 48]);

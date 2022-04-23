@@ -36,7 +36,9 @@ extern int yylineno;
 %token DISPLAY_T    
 %token AS_T       
 %token CORCHETE_A 
-%token CORCHETE_C   
+%token CORCHETE_C 
+%token LLAVE_A
+%token LLAVE_C  
 %token COMA_T      
 %token DOT_COM_T 
 %token PARENT_A    
@@ -51,7 +53,9 @@ extern int yylineno;
 %token OP_COMP    
 %token <strVal>CONST_INT
 %token <strVal>CONST_REAL
-%token <strVal>VARIABLE    
+%token <strVal>VARIABLE 
+%token BETWEEN_T  
+%token AVG_T 
 %token <strVal>CONST_STRING 
 %left  OP_REST_T OP_SUM_T
 %right OP_MULT_T OP_DIV_T
@@ -77,7 +81,9 @@ grammar:   dec_var                    {;}
        |   get                        {;}
        |   if                         {;}
        |   while                      {;}
-       |   lista                       {;}
+       |   lista                      {;}
+       |   between                    {;}
+       |   AVG                        {;}
        ;
 
 asig:   VARIABLE OP_ASIG_T expr             {;}
@@ -95,15 +101,15 @@ NUMERO: CONST_INT{
         insertNumber(&symbolTable,$1);
       }
 
-lista : expr_list 							        {;}
-      | lista COMA_T expr_list  				{;}
+lista : expr_list                             {;}
+      | expr                                  {;}
+      | lista COMA_T expr_list                {;}
+      | lista COMA_T expr                     {;}
 	    ;
 
-expr_list: CONST_INT      {;}
-        |  CONST_REAL     {;}
-        |  CONST_STRING   {;}
-        |  VARIABLE       {;}
-
+expr_list:  CONST_STRING   {;}
+      
+  
 expr: expr OP_SUM_T termino         {;}
 	| expr OP_REST_T termino        {;} 
 	| termino                       {;}
@@ -128,7 +134,7 @@ display: DISPLAY_T CONST_STRING_R   {;}
 get: GET_T VARIABLE {;}
    ;
 
-while: WHILE_T  cond_completa CORCHETE_A sentencia CORCHETE_C {;}
+while: WHILE_T  cond_completa LLAVE_A sentencia LLAVE_C {;}
 	 ;
 
 if: IF_T cond_completa 
@@ -139,6 +145,7 @@ if: IF_T cond_completa
       ELSE_T                {;}
       sentencia             {;}
       ENDIF_T               {;}
+  
     ;
 
 cond_completa: PARENT_A cond_completa PARENT_C                      {;}
@@ -162,8 +169,15 @@ cond: expr OP_COMP expr  {;}
     | expr OP_MAY expr {;}
     | expr OP_AND expr {;}
     | expr OP_OR expr {;}
+    | between         {;}
     | expr OP_NOT termino {;}
     | OP_NOT VARIABLE {;}
+    ;
+
+between: BETWEEN_T PARENT_A VARIABLE COMA_T CORCHETE_A expr DOT_COM_T expr CORCHETE_C PARENT_C {;}
+      ;
+
+AVG: AVG_T PARENT_A CORCHETE_A lista CORCHETE_C PARENT_C {;}
     ;
 
 dec_var: DIM_T OP_MEN dupla_asig OP_MAY {
@@ -208,8 +222,9 @@ int main(int argc, char* argv[])
     createStack(&stackVar);
     createStack(&stackDataTypeDecVar);
     createStack(&invertStackDataType);
+    
     yyparse();
-
+   
     deleteTable(&symbolTable);
     
     printf("\n Compilacion exitosa \n");

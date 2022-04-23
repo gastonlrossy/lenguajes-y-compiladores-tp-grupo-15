@@ -52,8 +52,12 @@ ELSE_T          "else"|"ELSE"|"Else"
 ENDIF_T         "endif"|"ENDIF"|"EndIf"
 GET_T           "GET"|"Get"|"get"
 DISPLAY_T       "DISPLAY"|"Display"|"display"
+BETWEEN_T       "BETWEEN"|"between"
+AVG_T           "AVG"|"avg"
 CORCHETE_A      "["
 CORCHETE_C      "]"
+LLAVE_A         "{"
+LLAVE_C         "}"
 PARENT_A        "("
 PARENT_C        ")"
 OP_ASIG_T       ":="|"="
@@ -67,6 +71,7 @@ OP_DIV_T        "/"
 OP_MEN_IGU      {OP_MEN}{OP_ASIG_T}
 OP_MAY_IGU      {OP_MAY}{OP_ASIG_T}
 VARIABLE        {LETRA}({LETRA}|{NUMERO}|"_")*
+
 
 %%
 
@@ -82,9 +87,13 @@ VARIABLE        {LETRA}({LETRA}|{NUMERO}|"_")*
 {REAL_T}                    {return REAL_T;}      
 {INT_T}                     {return INT_T;}    
 {GET_T}                     {return GET_T;}       
-{DISPLAY_T}                 {return DISPLAY_T;}   
+{DISPLAY_T}                 {return DISPLAY_T;} 
+{BETWEEN_T}                 {return BETWEEN_T;} 
+{AVG_T}                     {return AVG_T;}
 {CORCHETE_A}                {return CORCHETE_A;}  
-{CORCHETE_C}                {return CORCHETE_C;}  
+{CORCHETE_C}                {return CORCHETE_C;} 
+{LLAVE_A}                   {return LLAVE_A;}
+{LLAVE_C}                   {return LLAVE_C;}
 {STRING_T}                  {return STRING_T;}    
 {COMENTARIO_A_T}            {;}
 {COMENTARIO_B_T}            {;}
@@ -117,7 +126,7 @@ VARIABLE        {LETRA}({LETRA}|{NUMERO}|"_")*
                                 }
                             }   
     
-{VARIABLE}                  {yylval.strVal = strdup(yytext);return VARIABLE;}    
+{VARIABLE}                  {yylval.strVal = strdup(yytext);return VARIABLE;} 
 {OP_ASIG_T}                 {return OP_ASIG_T;}   
 {OP_SUM_T}                  {return OP_SUM_T;}    
 {OP_REST_T}                 {return OP_REST_T;}   
